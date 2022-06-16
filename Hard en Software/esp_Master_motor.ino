@@ -8,6 +8,9 @@
 
 BluetoothSerial SerialBT;
 
+//Infrared
+#define DATA_PIN A0
+float IR_WAARDE = 0;
 byte IR_data[8] = {};
 int i = 0;
 //motor pin
@@ -39,9 +42,14 @@ void setup() {
   //=============Bluethooth================
   SerialBT.begin("SS_Robotwagen"); //Bluetooth device name
   Serial.println("The device started, now you can pair it with bluetooth!");
+  
+  //INFRAED
+  pinMode(DATA_PIN, INPUT);
+
 }
 
 void loop() {
+	IR_WAARDE = 4800 / (analogRead(DATA_PIN) - 20);
 
   //=============Bluethooth================
   if (SerialBT.available()) {

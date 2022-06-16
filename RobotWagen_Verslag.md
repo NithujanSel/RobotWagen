@@ -222,6 +222,10 @@ Heeft lange beriek om afstand te meten
 
 ![](media/7be372c178354cafa14349b942467d4b.png)
 
+![](media/519342381806289165863e2c50511527.png)
+
+![](media/7a71e2916aa0e45f8e99f8dc360f37e8.png)
+
 ## Flowchart
 
 ![](media/761ac3199d6eeeeb5a95d0e73e179673.png)
