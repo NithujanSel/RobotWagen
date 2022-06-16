@@ -56,6 +56,7 @@ void loop() {
     char incomData = SerialBT.read();
     bTComand = incomData;
   }
+  //Manueel mode
   switch (bTComand) {
     case 0:
       drive_forward(90);
@@ -78,7 +79,31 @@ void loop() {
   }
 
   if (!manueel) {
-    Wire.requestFrom(8, 8);    // request 8 bytes from peripheral device #8
+		autoMode();
+
+  }
+  delay(50);
+}
+
+//Gaat 8 bit naar decimaal omzetten
+unsigned int binNaarDec(byte s[])
+{
+  int n = 0;
+  int i;
+
+  for (i = 0; i < 8; ++i) {
+    n <<= 1;
+    n += s[i] - 0;
+  }
+
+  return n;
+}
+
+
+//===MODE automatische
+
+void autoMode(){
+	    Wire.requestFrom(8, 8);    // request 8 bytes from peripheral device #8
     //Serial.println("IR data");
     while (Wire.available()) { // peripheral may send less than requested
       byte c = Wire.read(); // receive a byte as character
@@ -187,24 +212,10 @@ void loop() {
       }
 
     }
-
-  }
-  delay(50);
 }
 
-//Gaat 8 bit naar decimaal omzetten
-unsigned int binNaarDec(byte s[])
-{
-  int n = 0;
-  int i;
 
-  for (i = 0; i < 8; ++i) {
-    n <<= 1;
-    n += s[i] - 0;
-  }
 
-  return n;
-}
 
 //motor gaat stoppen
 
